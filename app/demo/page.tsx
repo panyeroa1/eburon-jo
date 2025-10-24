@@ -9,7 +9,7 @@ export default function DemoPage() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Eburon / Ye Demo – Dialer + IVR + Bland API</title>
+  <title>Eburon / Ye Demo – Dialer + IVR</title>
   <style>
     :root{
       --bg-dark:#121212; --bg-panel:#1e1e1e; --text:#fff; --text-dim:#b3b3b3;
@@ -177,7 +177,7 @@ export default function DemoPage() {
           <div>
             <label>IVR Voice</label>
             <select id="ivrVoice">
-              <option value="Alice" selected>Alice (Bland IVR)</option>
+              <option value="Alice" selected>Alice</option>
               <option value="June">June</option>
               <option value="base">Model "base" (default)</option>
             </select>
@@ -216,7 +216,7 @@ export default function DemoPage() {
         </div>
         <div class="row">
           <div>
-            <label>Bland API Key</label>
+            <label>API Key</label>
             <input id="apiKey" placeholder="sk-..." />
           </div>
           <div>
@@ -240,7 +240,7 @@ export default function DemoPage() {
         </div>
         <div class="split-footer">
           <button class="btn" id="simulateBtn">▶️ Simulate Only</button>
-          <button class="btn primary" id="callApiBtn">📞 Send via Bland API</button>
+          <button class="btn primary" id="callApiBtn">📞 Send via API</button>
           <button class="btn warn" id="clearLogBtn">🧹 Clear Log</button>
         </div>
         <div class="mini">Telephone number in use: <span id="numberPreview">+15551234567</span></div>
@@ -396,14 +396,6 @@ export default function DemoPage() {
       };
       tick();
     }
-    function mountHiddenAttribution(){
-      if(document.getElementById("hidden-attr")) return;
-      const span=document.createElement("span");
-      span.id="hidden-attr";
-      span.style.position="absolute"; span.style.left="-9999px"; span.style.width="1px"; span.style.height="1px"; span.style.overflow="hidden";
-      span.innerHTML = 'Sound Effect by <a href="https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=105991">freesound_community</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=105991">Pixabay</a>';
-      document.body.appendChild(span);
-    }
     function updateDisplay(){ display.textContent = currentNumber }
     function formatTime(s){ const m = String(Math.floor(s/60)).padStart(2,"0"); const ss = String(s%60).padStart(2,"0"); return \`\${m}:\${ss}\` }
     function resetCall(){
@@ -420,8 +412,8 @@ export default function DemoPage() {
     function startIvrIdleWatch(){
       clearTimeout(ivrIdleTimer);
       ivrIdleTimer = setTimeout(()=>{
-        log("IVR idle timeout → play BUSY tone, show hidden attribution, end call after 5s");
-        mountHiddenAttribution(); playBusyTone(5);
+        log("IVR idle timeout → play BUSY tone, end call after 5s");
+        playBusyTone(5);
         setTimeout(()=>{ endCall(); }, 5200);
       }, 10000);
     }
@@ -520,7 +512,7 @@ Resolve the caller's need quickly with empathy and ownership. Greeting and closi
         if(!res.ok){
           log("⚠️ API error (check CORS / API key / endpoint). This page calls the API client-side.");
         }else{
-          log("✅ Bland call initiated.");
+          log("✅ Call initiated.");
         }
       }catch(err){
         log("❌ Network/Fetch error: " + (err && err.message ? err.message : err));

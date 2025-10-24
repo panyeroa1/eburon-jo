@@ -32,13 +32,8 @@ export function Header() {
             <a href="#benefits" className="text-muted-foreground hover:text-foreground transition text-sm">
               Benefits
             </a>
-            <a
-              href="https://www.eburon.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition text-sm"
-            >
-              www.eburon.ai
+            <a href="/demo" className="text-muted-foreground hover:text-foreground transition text-sm">
+              Ye Demo
             </a>
           </nav>
 
@@ -60,13 +55,8 @@ export function Header() {
             <a href="#benefits" className="text-muted-foreground hover:text-foreground transition text-sm">
               Benefits
             </a>
-            <a
-              href="https://www.eburon.ai"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition text-sm"
-            >
-              www.eburon.ai
+            <a href="/demo" className="text-muted-foreground hover:text-foreground transition text-sm">
+              Ye Demo
             </a>
           </nav>
         )}

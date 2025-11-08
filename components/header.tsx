@@ -10,10 +10,12 @@ export default function LoginPage() {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = (e: any) => {
     e.preventDefault()
     if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
-      window.location.href = "https://eburon.ai/agent/index.html"
+      if (typeof window !== "undefined") {
+        window.location.href = "https://eburon.ai/agent/index.html"
+      }
     } else {
       setError("Invalid credentials. Please try again.")
     }

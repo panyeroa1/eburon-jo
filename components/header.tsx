@@ -4,6 +4,7 @@ import { useState } from "react"
 
 const DEMO_EMAIL = "demo@eburon.ai"
 const DEMO_PASSWORD = "Eburon2025"
+const REDIRECT_URL = "https://eburon.ai/agent/index.html"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -12,12 +13,17 @@ export default function LoginPage() {
 
   const handleLogin = (e: any) => {
     e.preventDefault()
-    if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
+
+    const emailOk = email.trim().toLowerCase() === DEMO_EMAIL.toLowerCase()
+    const passOk = password === DEMO_PASSWORD
+
+    if (emailOk && passOk) {
+      setError("")
       if (typeof window !== "undefined") {
-        window.location.href = "https://eburon.ai/agent/index.html"
+        window.location.href = REDIRECT_URL
       }
     } else {
-      setError("Invalid credentials. Please try again.")
+      setError("Invalid username or password.")
     }
   }
 
@@ -32,6 +38,7 @@ export default function LoginPage() {
         color: "#ffffff",
         fontFamily:
           '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif',
+        padding: "16px",
       }}
     >
       <form

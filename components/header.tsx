@@ -4,9 +4,9 @@ import { useState } from "react"
 
 const DEMO_EMAIL = "demo@eburon.ai"
 const DEMO_PASSWORD = "Eburon2025"
-const REDIRECT_URL = "https://eburon.ai/agent/index.html"
+const REDIRECT_URL = "/portal"
 
-export default function LoginPage() {
+export default function Header() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")

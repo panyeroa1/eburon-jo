@@ -6,7 +6,7 @@ const DEMO_EMAIL = "demo@eburon.ai"
 const DEMO_PASSWORD = "Eburon2025"
 const REDIRECT_URL = "/portal"
 
-export default function Header() {
+export function Header() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")

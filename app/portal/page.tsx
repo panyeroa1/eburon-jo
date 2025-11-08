@@ -22,9 +22,9 @@ export default function PortalPage() {
         <p style={{ fontSize: "18px", color: "#bbb" }}>
           You have successfully logged in.
         </p>
-        <div style={{ marginTop: "30px", width: "100%", height: "60vh" }}>
+        <div style={{ marginTop: "30px", width: "100%", height: "100vh" }}>
           <iframe
-            src="https://voicedemo-316842561818.us-west1.run.app/"
+            src="https://special-adventure-q7p744wvrxpw3rw4-3000.app.github.dev/portal"
             title="Eburon AI Portal"
             allow="microphone; audio-capture; autoplay; fullscreen; clipboard-write"
             style={{

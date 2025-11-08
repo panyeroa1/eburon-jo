@@ -54,23 +54,14 @@ export default function LoginPage() {
         >
           Eburon Login
         </h2>
-        <p
-          style={{
-            textAlign: "center",
-            fontSize: "13px",
-            color: "#b3b3b3",
-            marginBottom: "24px",
-          }}
-        >
-          Enter your demo credentials to continue.
-        </p>
 
-        <div style={{ display: "grid", gap: "12px" }}>
+        <div style={{ display: "grid", gap: "12px", marginTop: "18px" }}>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder="Enter username"
             style={{
               width: "100%",
               padding: "12px",
@@ -87,6 +78,7 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder="Enter password"
             style={{
               width: "100%",
               padding: "12px",
@@ -129,20 +121,6 @@ export default function LoginPage() {
           >
             Login
           </button>
-        </div>
-
-        <div
-          style={{
-            marginTop: "20px",
-            textAlign: "center",
-            fontSize: "12px",
-            color: "#9ca3af",
-          }}
-        >
-          <div>Demo Access:</div>
-          <code style={{ fontSize: "12px" }}>{DEMO_EMAIL}</code>
-          <br />
-          <code style={{ fontSize: "12px" }}>{DEMO_PASSWORD}</code>
         </div>
       </form>
     </div>

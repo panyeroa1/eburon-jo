@@ -33,7 +33,7 @@ export function Header() {
               Benefits
             </a>
             <a href="/demo" className="text-muted-foreground hover:text-foreground transition text-sm">
-              Ye Demo
+              Login
             </a>
           </nav>
 

@@ -1,66 +1,150 @@
 "use client"
 
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
-import Image from "next/image"
 
-export function Header() {
-  const [isOpen, setIsOpen] = useState(false)
+const DEMO_EMAIL = "demo@eburon.ai"
+const DEMO_PASSWORD = "Eburon2025"
+
+export default function LoginPage() {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (email === DEMO_EMAIL && password === DEMO_PASSWORD) {
+      window.location.href = "https://eburon.ai/agent/index.html"
+    } else {
+      setError("Invalid credentials. Please try again.")
+    }
+  }
 
   return (
-    <header className="fixed top-0 w-full bg-background/70 backdrop-blur-xl border-b border-border/30 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center">
-            <Image
-              src="https://eburon.vercel.app/logo-dark.png"
-              alt="Eburon"
-              width={140}
-              height={50}
-              className="w-auto h-8"
-            />
-          </div>
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#0a0a0a",
+        color: "#ffffff",
+        fontFamily:
+          '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif',
+      }}
+    >
+      <form
+        onSubmit={handleLogin}
+        style={{
+          width: "100%",
+          maxWidth: "360px",
+          background: "#141414",
+          border: "1px solid #2a2a2a",
+          borderRadius: "16px",
+          padding: "32px 28px",
+          boxShadow: "0 20px 45px rgba(0,0,0,.6)",
+        }}
+      >
+        <h2
+          style={{
+            textAlign: "center",
+            marginBottom: "10px",
+            fontSize: "22px",
+            fontWeight: 600,
+          }}
+        >
+          Eburon Login
+        </h2>
+        <p
+          style={{
+            textAlign: "center",
+            fontSize: "13px",
+            color: "#b3b3b3",
+            marginBottom: "24px",
+          }}
+        >
+          Enter your demo credentials to continue.
+        </p>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="#solution" className="text-muted-foreground hover:text-foreground transition text-sm">
-              Solution
-            </a>
-            <a href="#use-cases" className="text-muted-foreground hover:text-foreground transition text-sm">
-              Use Cases
-            </a>
-            <a href="#benefits" className="text-muted-foreground hover:text-foreground transition text-sm">
-              Benefits
-            </a>
-            <a href="/demo" className="text-muted-foreground hover:text-foreground transition text-sm">
-              Login
-            </a>
-          </nav>
+        <div style={{ display: "grid", gap: "12px" }}>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "12px",
+              borderRadius: "10px",
+              border: "1px solid #333",
+              background: "#0f0f0f",
+              color: "#fff",
+              fontSize: "14px",
+            }}
+          />
 
-          {/* Mobile Menu Button */}
-          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-foreground" aria-label="Toggle menu">
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            style={{
+              width: "100%",
+              padding: "12px",
+              borderRadius: "10px",
+              border: "1px solid #333",
+              background: "#0f0f0f",
+              color: "#fff",
+              fontSize: "14px",
+            }}
+          />
+
+          {error && (
+            <div
+              style={{
+                color: "#ff6b6b",
+                fontSize: "12px",
+                textAlign: "center",
+                marginTop: "4px",
+              }}
+            >
+              {error}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            style={{
+              marginTop: "10px",
+              padding: "12px",
+              borderRadius: "999px",
+              border: "none",
+              fontSize: "14px",
+              fontWeight: 600,
+              background:
+                "linear-gradient(135deg, #1DB954, #17a34a, #1DB954, #14b8a6)",
+              color: "#000",
+              cursor: "pointer",
+              transition: "opacity .2s ease",
+            }}
+          >
+            Login
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <nav className="md:hidden pb-4 flex flex-col gap-4">
-            <a href="#solution" className="text-muted-foreground hover:text-foreground transition text-sm">
-              Solution
-            </a>
-            <a href="#use-cases" className="text-muted-foreground hover:text-foreground transition text-sm">
-              Use Cases
-            </a>
-            <a href="#benefits" className="text-muted-foreground hover:text-foreground transition text-sm">
-              Benefits
-            </a>
-            <a href="/demo" className="text-muted-foreground hover:text-foreground transition text-sm">
-              Login
-            </a>
-          </nav>
-        )}
-      </div>
-    </header>
+        <div
+          style={{
+            marginTop: "20px",
+            textAlign: "center",
+            fontSize: "12px",
+            color: "#9ca3af",
+          }}
+        >
+          <div>Demo Access:</div>
+          <code style={{ fontSize: "12px" }}>{DEMO_EMAIL}</code>
+          <br />
+          <code style={{ fontSize: "12px" }}>{DEMO_PASSWORD}</code>
+        </div>
+      </form>
+    </div>
   )
 }
